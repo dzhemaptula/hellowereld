@@ -2,30 +2,34 @@ package main
 
 import "fmt"
 
-func fibonacci(c, quit chan int) {
-	x, y := 0, 1
-	for {
-		select {
-		case c <- x:
-			x, y = y, x+y
-		case <-quit:
-			fmt.Println("quit")
-			return
-		}
-	}
+func main() {
+	fmt.Println("Hello go")
 }
 
-func main() {
-	c := make(chan int)
-	quit := make(chan int)
-	go func() {
-		for i := 0; i < 15; i++ {
-			fmt.Printf("%v, ", <-c)
-		}
-		quit <- 0
-	}()
-	fibonacci(c, quit)
-}
+// func fibonacci(c, quit chan int) {
+// 	x, y := 0, 1
+// 	for {
+// 		select {
+// 		case c <- x:
+// 			x, y = y, x+y
+// 		case <-quit:
+// 			fmt.Println("quit")
+// 			return
+// 		}
+// 	}
+// }
+
+// func main() {
+// 	c := make(chan int)
+// 	quit := make(chan int)
+// 	go func() {
+// 		for i := 0; i < 15; i++ {
+// 			fmt.Printf("%v, ", <-c)
+// 		}
+// 		quit <- 0
+// 	}()
+// 	fibonacci(c, quit)
+// }
 
 // func sum(s []int, c chan int) {
 // 	sum := 0

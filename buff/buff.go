@@ -1,8 +1,8 @@
-package main
+package buff
 
 import "fmt"
 
-func main() {
+func Buffer() {
 	ch := make(chan int, 2)
 	ch <- 1
 	ch <- 2
